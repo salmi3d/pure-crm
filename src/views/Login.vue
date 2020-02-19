@@ -17,7 +17,6 @@
       <div>
         <button class="btn waves-effect waves-light auth-submit" type="submit">
           Continue
-          <i class="material-icons right">send</i>
         </button>
       </div>
 
