@@ -7,7 +7,7 @@ export default {
       try {
         await firebase.auth().signInWithEmailAndPassword(email, password)
       } catch (error) {
-        dispatch('setError', error)
+        dispatch('setError', error, { root: true })
         throw error
       }
     },
@@ -20,12 +20,13 @@ export default {
           name
         })
       } catch (error) {
-        dispatch('setError', error)
+        dispatch('setError', error, { root: true })
         throw error
       }
     },
-    async logout() {
+    async logout({ dispatch }) {
       await firebase.auth().signOut()
+      dispatch('info/clearInfo', null, { root: true })
     },
     getUserId() {
       const user = firebase.auth().currentUser

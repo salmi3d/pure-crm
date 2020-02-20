@@ -16,7 +16,7 @@
             data-target="dropdown"
             ref="dropdown"
           >
-            USER_NAME
+            {{ userInfo.name }}
             <i class="material-icons right">arrow_drop_down</i>
           </a>
 
@@ -41,7 +41,14 @@
 
 <script>
 import * as M from 'materialize-css'
+import { mapGetters } from 'vuex'
+
 export default {
+  computed: {
+    ...mapGetters('info', {
+      userInfo: 'info',
+    }),
+  },
   mounted() {
     this.interval = setInterval(() => {
       this.date = new Date()
