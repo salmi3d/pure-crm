@@ -79,10 +79,10 @@ export default {
       }
 
       try {
-        await this.$store.dispatch('login', formData)
+        await this.$store.dispatch('auth/login', formData)
         this.$router.push('/')
       } catch (error) {
-        console.log(error)
+        //
       }
     }
   }
