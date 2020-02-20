@@ -32,17 +32,34 @@
           v-else-if="$v.password.$dirty && !$v.password.minLength"
         >Your password must be at least {{ $v.password.$params.minLength.min }} characters</small>
       </div>
+      <div class="input-field">
+        <input id="name" type="text"
+          v-model.trim="name"
+          :class="{invalid: $v.name.$dirty && !$v.name.required}"
+        />
+        <label for="name">Name</label>
+        <small
+          class="helper-text invalid"
+          v-if="$v.name.$dirty && !$v.name.required"
+        >Please enter your name</small>
+      </div>
+      <p>
+        <label>
+          <input type="checkbox" v-model="agree" />
+          <span>I accept the rules</span>
+        </label>
+      </p>
     </div>
     <div class="card-action">
       <div>
         <button class="btn waves-effect waves-light auth-submit" type="submit">
-          Continue
+          Create account
         </button>
       </div>
 
       <p class="center">
-        Don't have an account?
-        <router-link to="/register">Sign up!</router-link>
+        Already have an account?
+        <router-link to="/login">Sign in!</router-link>
       </p>
     </div>
   </form>
@@ -51,24 +68,29 @@
 <script>
 import { email, required, minLength } from 'vuelidate/lib/validators'
 export default {
-  name: 'login',
+  name: 'register',
   data: () => ({
     email: '',
-    password: ''
+    password: '',
+    name: '',
+    agree: false
   }),
   validations: {
     email: { email, required },
-    password: { required, minLength: minLength(6) }
+    password: { required, minLength: minLength(6) },
+    name: { required },
+    agree: { checked: v => v }
   },
   methods: {
     onSubmit() {
-      if(this.$v.$invalid) {
+      if (this.$v.$invalid) {
         this.$v.$touch()
         return
       }
       const formData = {
         email: this.email,
-        password: this.password
+        password: this.password,
+        name: this.name
       }
       console.log(formData)
       this.$router.push('/')
