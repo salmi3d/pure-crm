@@ -50,12 +50,19 @@
 
 <script>
 import { email, required, minLength } from 'vuelidate/lib/validators'
+import messages from '@/utils/messages'
 export default {
   name: 'login',
   data: () => ({
     email: '',
     password: ''
   }),
+  mounted() {
+    const message = messages[this.$route.query.message]
+    if(message) {
+      this.$message(message)
+    }
+  },
   validations: {
     email: { email, required },
     password: { required, minLength: minLength(6) }
