@@ -36,7 +36,7 @@ export default {
   }),
   async mounted() {
     if (Object.entries(this.$store.getters['info/info']).length === 0) {
-      await this.$store.dispatch('info/fetchInfo')
+      await this.$store.dispatch('info/fetch')
     }
 
     this.loading = false

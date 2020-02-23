@@ -14,7 +14,7 @@ export default {
     }
   },
   actions: {
-    async fetchInfo({ dispatch, commit }) {
+    async fetch({ dispatch, commit }) {
       try {
         const userId = await dispatch('auth/getUserId', null, { root: true })
         const info = (await firebase.database().ref(`/users/${userId}/info`).once('value')).val()
@@ -23,7 +23,7 @@ export default {
         //
       }
     },
-    clearInfo({ commit }) {
+    clear({ commit }) {
       commit('CLEAR_INFO')
     }
   },

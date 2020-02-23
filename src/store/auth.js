@@ -26,7 +26,7 @@ export default {
     },
     async logout({ dispatch }) {
       await firebase.auth().signOut()
-      dispatch('info/clearInfo', null, { root: true })
+      dispatch('info/clear', null, { root: true })
     },
     getUserId() {
       const user = firebase.auth().currentUser
