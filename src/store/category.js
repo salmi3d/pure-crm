@@ -16,6 +16,32 @@ export default {
         dispatch('setError', error, { root: true })
         throw error
       }
+    },
+    async update({ dispatch }, { id, title, limit }) {
+      try {
+        const userId = await dispatch('auth/getUserId', null, { root: true })
+        await firebse.database().ref(`/users/${userId}/categories`).child(id).update({
+          title,
+          limit
+        })
+      } catch (error) {
+        dispatch('setError', error, { root: true })
+        throw error
+      }
+    },
+    async fetchAll({ dispatch }) {
+      try {
+        const userId = await dispatch('auth/getUserId', null, { root: true })
+        const categories = (await firebse.database().ref(`/users/${userId}/categories`).once('value')).val() || {}
+
+        return Object.keys(categories).map(key => ({
+          ...categories[key],
+          id: key
+        }))
+      } catch (error) {
+        dispatch('setError', error, { root: true })
+        throw error
+      }
     }
   }
 }
