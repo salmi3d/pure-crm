@@ -2,14 +2,6 @@ import firebase from 'firebase/app'
 
 export default {
   namespaced: true,
-  state: {
-
-  },
-  mutations: {
-    SET_INFO(state, info) {
-      state.info = info
-    },
-  },
   actions: {
     async create({ dispatch }, record) {
       try {
@@ -35,7 +27,4 @@ export default {
       }
     }
   },
-  getters: {
-    info: state => state.info
-  }
 }

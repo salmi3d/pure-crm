@@ -6,6 +6,7 @@
 
 <script>
 export default {
+  name: 'popup-layout',
   computed: {
     error() {
       return this.$store.getters.error

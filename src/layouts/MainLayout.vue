@@ -27,10 +27,20 @@
 import Navbar from "@/components/app/Navbar"
 import Sidebar from "@/components/app/Sidebar"
 export default {
-  name: "main-layout",
+  name: 'main-layout',
   components: {
     Navbar,
     Sidebar
+  },
+  computed: {
+    error() {
+      return this.$store.getters.error
+    }
+  },
+  watch: {
+    error(fbError) {
+      this.$error(fbError.message || 'Something went wrong')
+    }
   },
   data: () => ({
     isOpen: true,

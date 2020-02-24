@@ -1,26 +1,10 @@
 <template>
   <div id="app">
-    <component :is="layout">
+    <component :is="this.$route.meta.layout || 'div'">
       <router-view />
     </component>
   </div>
 </template>
-
-<script>
-import MainLayout from "@/layouts/MainLayout"
-import PopupLayout from "@/layouts/PopupLayout"
-export default {
-  components: {
-    MainLayout,
-    PopupLayout
-  },
-  computed: {
-    layout() {
-      return `${this.$route.meta.layout || "main"}-layout`
-    }
-  }
-};
-</script>
 
 <style lang="scss">
 @import "~materialize-css/dist/css/materialize.min.css";

@@ -8,9 +8,9 @@
         <table>
           <thead>
             <tr>
-              <th>Валюта</th>
-              <th>Курс</th>
-              <th>Дата</th>
+              <th>Currency</th>
+              <th>Rate</th>
+              <th>Date</th>
             </tr>
           </thead>
 
