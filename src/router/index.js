@@ -24,6 +24,12 @@ const routes = [
     component: () => import('@/views/Record.vue')
   },
   {
+    path: '/planning',
+    name: 'recplanningrd',
+    meta: { layout: 'main' },
+    component: () => import('@/views/Planning.vue')
+  },
+  {
     path: '/login',
     name: 'login',
     meta: { layout: 'popup' },

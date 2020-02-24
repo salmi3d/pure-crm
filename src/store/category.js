@@ -1,4 +1,4 @@
-import firebse from 'firebase/app'
+import firebase from 'firebase/app'
 
 export default {
   namespaced: true,
@@ -6,7 +6,7 @@ export default {
     async create({ dispatch }, { title, limit }) {
       try {
         const userId = await dispatch('auth/getUserId', null, { root: true })
-        const category = await firebse.database().ref(`/users/${userId}/categories`).push({
+        const category = await firebase.database().ref(`/users/${userId}/categories`).push({
           title,
           limit
         })
@@ -20,7 +20,7 @@ export default {
     async update({ dispatch }, { id, title, limit }) {
       try {
         const userId = await dispatch('auth/getUserId', null, { root: true })
-        await firebse.database().ref(`/users/${userId}/categories`).child(id).update({
+        await firebase.database().ref(`/users/${userId}/categories`).child(id).update({
           title,
           limit
         })
@@ -32,7 +32,7 @@ export default {
     async fetchAll({ dispatch }) {
       try {
         const userId = await dispatch('auth/getUserId', null, { root: true })
-        const categories = (await firebse.database().ref(`/users/${userId}/categories`).once('value')).val() || {}
+        const categories = (await firebase.database().ref(`/users/${userId}/categories`).once('value')).val() || {}
 
         return Object.keys(categories).map(key => ({
           ...categories[key],
