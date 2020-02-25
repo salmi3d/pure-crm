@@ -44,6 +44,12 @@ const routes = [
     name: 'planning',
     meta: { layout: MainLayout, auth: true },
     component: () => import('@/views/Planning.vue')
+  },
+  {
+    path: '/history',
+    name: 'history',
+    meta: { layout: MainLayout, auth: true },
+    component: () => import('@/views/History.vue')
   }
 ]
 

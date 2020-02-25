@@ -7,7 +7,10 @@
 
     <Loader v-if="loading" />
 
-    <p v-else-if="categories.length === 0" class="center">There are no categories yet. <router-link to="/categories">Add new category</router-link></p>
+    <p v-else-if="categories.length === 0" class="center">
+      There are no categories yet.
+      <router-link to="/categories">Add new category</router-link>
+    </p>
 
     <section v-else>
       <div
