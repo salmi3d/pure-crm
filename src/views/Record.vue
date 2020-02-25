@@ -6,7 +6,10 @@
 
     <Loader v-if="loading" />
 
-    <p v-else-if="categories.length === 0" class="center">There are no categories yet. <router-link to="/categories">Add new category</router-link></p>
+    <p v-else-if="categories.length === 0" class="center">
+      There are no categories yet.
+      <router-link to="/categories">Add new category</router-link>
+    </p>
 
     <form class="form" v-else @submit.prevent="onSubmit">
       <div class="input-field">
@@ -15,14 +18,19 @@
             v-for="category in categories"
             :key="category.id"
             :value="category.id"
-          >{{ category.title }}</option>
+            >{{ category.title }}</option
+          >
         </select>
         <label>Choose a category</label>
       </div>
 
       <p>
         <label>
-          <input class="with-gap" name="type" type="radio" value="income"
+          <input
+            class="with-gap"
+            name="type"
+            type="radio"
+            value="income"
             v-model="type"
           />
           <span>Income</span>
@@ -31,7 +39,11 @@
 
       <p>
         <label>
-          <input class="with-gap" name="type" type="radio" value="outcome"
+          <input
+            class="with-gap"
+            name="type"
+            type="radio"
+            value="outcome"
             v-model="type"
           />
           <span>Outcome</span>
@@ -39,25 +51,35 @@
       </p>
 
       <div class="input-field">
-        <input id="amount" type="number"
+        <input
+          id="amount"
+          type="number"
           v-model.number="amount"
-          :class="{invalid: $v.amount.$dirty && !$v.amount.minValue}"
+          :class="{ invalid: $v.amount.$dirty && !$v.amount.minValue }"
         />
         <label for="amount">Amount</label>
-        <span class="helper-text invalid"
+        <span
+          class="helper-text invalid"
           v-if="$v.amount.$dirty && !$v.amount.minValue"
-        >Minimum value {{ $v.amount.$params.minValue.min }}</span>
+          >Minimum value {{ $v.amount.$params.minValue.min }}</span
+        >
       </div>
 
       <div class="input-field">
-        <input id="description" type="text"
+        <input
+          id="description"
+          type="text"
           v-model="description"
-          :class="{invalid: $v.description.$dirty && !$v.description.required}"
+          :class="{
+            invalid: $v.description.$dirty && !$v.description.required
+          }"
         />
         <label for="description">Description</label>
-        <span class="helper-text invalid"
+        <span
+          class="helper-text invalid"
           v-if="$v.description.$dirty && !$v.description.required"
-        >Please enter a description</span>
+          >Please enter a description</span
+        >
       </div>
 
       <button class="btn waves-effect waves-light" type="submit">
@@ -90,7 +112,7 @@ export default {
   async mounted() {
     this.categories = await this.$store.dispatch('category/fetchAll')
     this.loading = false
-    if(this.categories.length > 0) {
+    if (this.categories.length > 0) {
       this.category = this.categories[0].id
     }
     setTimeout(() => {
@@ -99,7 +121,7 @@ export default {
     }, 0)
   },
   destroyed() {
-    if(this.select && this.select.destroy) {
+    if (this.select && this.select.destroy) {
       this.select.destroy()
     }
   },
@@ -108,7 +130,7 @@ export default {
       userInfo: 'info',
     }),
     canCreateRecord() {
-      if(this.type === 'income') {
+      if (this.type === 'income') {
         return true
       }
       return this.userInfo.bill >= this.amount
@@ -116,12 +138,12 @@ export default {
   },
   methods: {
     async onSubmit() {
-      if(this.$v.$invalid) {
+      if (this.$v.$invalid) {
         this.$v.$touch()
         return
       }
 
-      if(!this.canCreateRecord) {
+      if (!this.canCreateRecord) {
         this.$message(`Insufficient funds in the account (${this.amount - this.userInfo.bill})`)
       }
 

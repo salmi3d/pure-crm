@@ -1,0 +1,11 @@
+{
+  "ProfileTitle": "Profile",
+  "Name": "Name",
+  "Message_EnterName": "Name can't be blank",
+  "Update": "Update",
+  "Menu_Home": "Home",
+  "Menu_History": "History",
+  "Menu_Planning": "Planning",
+  "Menu_NewRecord": "New Record",
+  "Menu_Categories": "Categories"
+}
