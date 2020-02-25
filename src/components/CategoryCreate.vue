@@ -41,6 +41,7 @@ import { required, minValue } from 'vuelidate/lib/validators'
 import * as M from 'materialize-css'
 
 export default {
+  name: 'category-create',
   data: () => ({
     title: '',
     limit: 100

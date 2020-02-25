@@ -32,6 +32,7 @@
 
 <script>
 export default {
+  name: 'home-currency',
   props: ['rates', 'date'],
   data: () => ({
     currencies: ['RUB', 'USD', 'EUR']

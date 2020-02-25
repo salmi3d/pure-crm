@@ -20,6 +20,7 @@
 
 <script>
 export default {
+  name: 'home-bill',
   props: ['rates'],
   data: () =>({
     currencies: ['RUB', 'USD', 'EUR']

@@ -44,6 +44,7 @@ import * as M from 'materialize-css'
 import { mapGetters } from 'vuex'
 
 export default {
+  name: 'navbar',
   computed: {
     ...mapGetters('info', {
       userInfo: 'info',

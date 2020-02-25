@@ -52,6 +52,7 @@ import { required, minValue } from 'vuelidate/lib/validators'
 import * as M from 'materialize-css'
 
 export default {
+  name: 'category-edit',
   props: {
     categories: {
       type: Array,
