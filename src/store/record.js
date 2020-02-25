@@ -25,6 +25,20 @@ export default {
         dispatch('setError', error, { root: true })
         throw error
       }
+    },
+    async fetchById({ dispatch }, id) {
+      try {
+        const userId = await dispatch('auth/getUserId', null, { root: true })
+        const record = (await firebase.database().ref(`/users/${userId}/records`).child(id).once('value')).val() || {}
+
+        return {
+          ...record,
+          id
+        }
+      } catch (error) {
+        dispatch('setError', error, { root: true })
+        throw error
+      }
     }
   },
 }

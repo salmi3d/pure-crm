@@ -50,6 +50,12 @@ const routes = [
     name: 'history',
     meta: { layout: MainLayout, auth: true },
     component: () => import('@/views/History.vue')
+  },
+  {
+    path: '/detail/:id',
+    name: 'detail',
+    meta: {layout: MainLayout, auth: true},
+    component: () => import('@/views/Detail.vue')
   }
 ]
 

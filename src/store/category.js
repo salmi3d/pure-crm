@@ -42,6 +42,20 @@ export default {
         dispatch('setError', error, { root: true })
         throw error
       }
+    },
+    async fetchById({ dispatch }, id) {
+      try {
+        const userId = await dispatch('auth/getUserId', null, { root: true })
+        const category = (await firebase.database().ref(`/users/${userId}/categories`).child(id).once('value')).val() || {}
+
+        return {
+          ...category,
+          id
+        }
+      } catch (error) {
+        dispatch('setError', error, { root: true })
+        throw error
+      }
     }
   }
 }
