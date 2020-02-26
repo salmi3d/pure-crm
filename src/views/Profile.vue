@@ -52,6 +52,11 @@ import * as M from 'materialize-css'
 
 export default {
   name: 'profile',
+  metaInfo() {
+    return {
+      title: this.$title('ProfileTitle')
+    }
+  },
   data: () => ({
     name: '',
     isEngLocale: true

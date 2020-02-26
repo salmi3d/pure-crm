@@ -1,4 +1,6 @@
 {
+  "HaveToBeLoggedIn": "You must be logged in to do this",
+  "Logout": "You are logged out",
   "ProfileTitle": "Profile",
   "Name": "Name",
   "Message_EnterName": "Name can't be blank",

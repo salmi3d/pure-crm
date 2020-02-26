@@ -61,6 +61,8 @@
 <script>
 import { email, required, minLength } from 'vuelidate/lib/validators'
 import messages from '@/utils/messages'
+import localizeFilter from '@/filters/localize.filter'
+
 export default {
   name: 'login',
   data: () => ({
@@ -70,7 +72,7 @@ export default {
   mounted() {
     const message = messages[this.$route.query.message]
     if (message) {
-      this.$message(message)
+      this.$message(localizeFilter(message))
     }
   },
   validations: {
