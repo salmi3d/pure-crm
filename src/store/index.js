@@ -23,10 +23,15 @@ export default new Vuex.Store({
     setError({ commit }, error) {
       commit('SET_ERROR', error)
     },
-    async fetchCurrency() {
-      const key = process.env.VUE_APP_FIXER
-      const response = await fetch(`http://data.fixer.io/api/latest?access_key=${key}&symbols=USD,EUR,RUB`)
-      return await response.json()
+    async fetchCurrency({ dispatch }) {
+      try {
+        const response = await (await fetch(`https://api.exchangeratesapi.io/latest?base=EUR&symbols=USD,RUB`)).json()
+        response.rates.EUR = 1
+        return response
+      } catch (error) {
+        dispatch('setError')
+        throw error
+      }
     }
   },
   getters: {

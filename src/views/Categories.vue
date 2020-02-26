@@ -5,7 +5,10 @@
     </div>
     <section>
       <Loader v-if="loading" />
-      <div class="row" v-else>
+      <div
+        class="row"
+        v-else
+      >
         <CategoryCreate @created="addNewCategory" />
         <CategoryEdit
           v-if="categories.length > 0"
@@ -13,7 +16,10 @@
           :key="categories.length + updateCount"
           @updated="updateCategory"
         />
-        <p v-else class="center">There are no categories yet</p>
+        <p
+          v-else
+          class="center"
+        >There are no categories yet</p>
       </div>
     </section>
   </div>
@@ -41,7 +47,6 @@ export default {
   methods: {
     addNewCategory(category) {
       this.categories.push(category)
-      console.log(this.categories)
     },
     updateCategory(category) {
       const idx = this.categories.findIndex(c => c.id === category.id)
