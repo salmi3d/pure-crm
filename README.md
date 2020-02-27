@@ -1,6 +1,6 @@
-# pure-crm
+# 📋 pure-crm
 
-Simple home CRM system written with Vuejs, Firebase and Materialize CSS
+Simple home CRM system is built with Vue.js, Firebase and Materialize CSS
 
 ## Demo
 
